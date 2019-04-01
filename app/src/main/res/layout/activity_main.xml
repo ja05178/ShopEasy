@@ -1,30 +1,32 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:id="@+id/linearLayout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android">
 
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:id="@+id/relativeLayout"
+    android:background="@color/colorGeorgiaSouthernBlue">
 
-    <EditText
-        android:id="@+id/editText"
+    <Button
+        android:id="@+id/addGroceryList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter Url..."
-        android:inputType="text"/>
-    <Button
-        android:id="@+id/searchButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Search"/>
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true" />
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-</LinearLayout>
+        android:layout_alignTop="@+id/recyclerView"
+        android:layout_marginTop="-67dp"
+        android:layout_marginBottom="52dp"
+        android:text="Add New List" />
+<android.support.v7.widget.RecyclerView
+    android:id="@+id/recyclerView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="100dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    android:background="@color/colorGeorgiaSouthernBlue"
+    android:dividerHeight="10dp"
+    android:divider="@android:color/black"/>
+
+
+
+
+</RelativeLayout>
