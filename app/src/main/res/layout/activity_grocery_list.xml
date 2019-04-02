@@ -12,7 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="0dp"
-        android:background="@color/colorGeorgiaSouthernGrey"
         android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textSize="25dp"

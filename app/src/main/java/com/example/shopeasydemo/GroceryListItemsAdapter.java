@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -31,7 +32,7 @@ public class GroceryListItemsAdapter extends RecyclerView.Adapter<GroceryListIte
     }
 
     @Override
-    public void onBindViewHolder(GroceryListItemsAdapter.MyViewHolder myViewHolder, final int position) {
+    public void onBindViewHolder(final GroceryListItemsAdapter.MyViewHolder myViewHolder, final int position) {
         String item = arrayListGroceryItems.get(position);
         TextView textView = myViewHolder.tv;
         textView.setText(item);
@@ -39,6 +40,14 @@ public class GroceryListItemsAdapter extends RecyclerView.Adapter<GroceryListIte
             @Override
             public void onClick(View v) {
                 System.out.println("Clicked Item #" + position);
+            }
+        });
+        Button bt = myViewHolder.bt;
+        bt.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                arrayListGroceryItems.remove(position);
+                notifyDataSetChanged();
             }
         });
 
@@ -50,9 +59,11 @@ public class GroceryListItemsAdapter extends RecyclerView.Adapter<GroceryListIte
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView tv;
+        Button bt;
         public MyViewHolder(View itemView) {
             super(itemView);
             tv = (TextView) itemView.findViewById(R.id.groceryListItem);
+            bt = (Button) itemView.findViewById(R.id.deleteGroceryListItem);
         }
     }
 }

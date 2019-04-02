@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -44,7 +45,14 @@ public class RecipeListRecyclerAdapter extends RecyclerView.Adapter<RecipeListRe
                 context.startActivity(i);
             }
         });
-
+        Button bt = myViewHolder.bt;
+        bt.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                arrayListGroceryList.remove(position);
+                notifyDataSetChanged();
+            }
+        });
     }
     @Override
     public int getItemCount() {
@@ -53,9 +61,11 @@ public class RecipeListRecyclerAdapter extends RecyclerView.Adapter<RecipeListRe
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView tv;
+        Button bt;
         public MyViewHolder(View itemView) {
             super(itemView);
             tv = (TextView) itemView.findViewById(R.id.textView);
+            bt = (Button) itemView.findViewById(R.id.deleteGroceryList);
         }
     }
 }
