@@ -7,6 +7,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -32,7 +34,7 @@ public class RecipeListRecyclerAdapter extends RecyclerView.Adapter<RecipeListRe
 
     @Override
     public void onBindViewHolder(RecipeListRecyclerAdapter.MyViewHolder myViewHolder, final int position) {
-        GroceryList recipe = arrayListGroceryList.get(position);
+        final GroceryList recipe = arrayListGroceryList.get(position);
         TextView textView = myViewHolder.tv;
         textView.setText(recipe.getListName());
         textView.setOnClickListener(new View.OnClickListener(){
@@ -44,7 +46,17 @@ public class RecipeListRecyclerAdapter extends RecyclerView.Adapter<RecipeListRe
                 context.startActivity(i);
             }
         });
-
+        Button deleteList = myViewHolder.deleteListBt;
+        deleteList.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                System.out.println("Delete item");
+                MainActivity.db.dropTable(recipe.getListName());
+                MainActivity.db.deleteList(recipe.getListName());
+                arrayListGroceryList.remove(position);
+                notifyDataSetChanged();
+            }
+        });
     }
     @Override
     public int getItemCount() {
@@ -53,9 +65,11 @@ public class RecipeListRecyclerAdapter extends RecyclerView.Adapter<RecipeListRe
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView tv;
+        Button deleteListBt;
         public MyViewHolder(View itemView) {
             super(itemView);
             tv = (TextView) itemView.findViewById(R.id.textView);
+            deleteListBt = (Button) itemView.findViewById(R.id.deleteListButton);
         }
     }
 }

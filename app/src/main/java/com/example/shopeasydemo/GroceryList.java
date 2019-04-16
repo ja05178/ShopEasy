@@ -5,15 +5,15 @@ import java.util.ArrayList;
 
 public class GroceryList implements Serializable {
     private String listName;
-    private ArrayList<String> listItems;
-    public GroceryList(String listName, ArrayList<String> listItems){
+    private ArrayList<ListItem> listItems;
+    public GroceryList(String listName, ArrayList<ListItem> listItems){
         this.listItems = listItems;
         this.listName = listName;
     }
     public String getListName(){return listName;}
-    public ArrayList<String> getListItems(){return listItems;}
-    public void addListItems(String newItem){
-        listItems.add(newItem);
+    public ArrayList<ListItem> getListItems(){return listItems;}
+    public void addListItems(String itemName, String category){
+        listItems.add(new ListItem(itemName, category));
     }
 
 }

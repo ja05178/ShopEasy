@@ -78,19 +78,14 @@ public class GroceryListAdd extends AppCompatActivity {
         }
         @Override
         protected void onPostExecute(Void result) {
-            System.out.println("Ingredients length = " + ingredients.length);
             for(int i = 0;i < ingredients.length; i ++){
-                groceryList.addListItems(ingredients[i]);
+                groceryList.addListItems(ingredients[i], "Test");
                 System.out.println(ingredients[i] + " added to grocery List");
             }
             Intent i = new Intent(getBaseContext(), GroceryListActivity.class);
             i.putExtra("groceryList", groceryList);
             startActivity(i);
-//
-//            TextView textView = (TextView) findViewById(R.id.textView2);
-//            ImageView imageView = (ImageView) findViewById(R.id.imageView);
-//            imageView.setImageBitmap(bitmap);
-//            textView.setText(text);
+
         }
     }
 

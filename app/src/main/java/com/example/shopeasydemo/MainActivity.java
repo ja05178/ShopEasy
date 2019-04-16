@@ -1,5 +1,6 @@
 package com.example.shopeasydemo;
 
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
@@ -21,6 +22,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -42,16 +44,17 @@ public class MainActivity extends AppCompatActivity{
     private EditText et;
     private Bitmap bitmap;
     private RecipeListRecyclerAdapter mRecyclerAdapter;
-    private ArrayList<GroceryList> mArrayListGroceryList = new ArrayList<>();
+    public static ArrayList<GroceryList> mArrayListGroceryList = new ArrayList<>();
     private RecyclerView mRecyclerView;
+    public static databaseHelper db;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
+    protected void onResume() {
+        super.onResume();
+        mArrayListGroceryList.clear();
+        db = new databaseHelper(this);
         mRecyclerView = (RecyclerView) this.findViewById(R.id.recyclerView);
-        testData();
+        getLists();
         mRecyclerAdapter = new RecipeListRecyclerAdapter(this, mArrayListGroceryList);
         mRecyclerView.setAdapter(mRecyclerAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -69,10 +72,24 @@ public class MainActivity extends AppCompatActivity{
                     public void onClick(View v) {
                         EditText et = addGroceryListView.findViewById(R.id.addListNameEditText);
                         String newListName = et.getText().toString();
-                        ArrayList<String> testItems = new ArrayList<>();
-                        mArrayListGroceryList.add(new GroceryList(newListName, testItems));
-                        mRecyclerAdapter.notifyItemInserted(mArrayListGroceryList.size() - 1);
-                       mPopupWindow.dismiss();
+                        boolean marker = false;
+                        for(int i =0; i < mArrayListGroceryList.size(); i ++ ){
+                            if(mArrayListGroceryList.get(i).getListName().equals(newListName)){
+                                marker = true;
+                            }
+                        }
+                        if(!marker) {
+                            System.out.println("List added");
+                            ArrayList<ListItem> testItems = new ArrayList<>();
+                            mArrayListGroceryList.add(new GroceryList(newListName, testItems));
+                            db.addGroceryList(newListName);
+                            mRecyclerAdapter.notifyItemInserted(mArrayListGroceryList.size() - 1);
+                            mPopupWindow.dismiss();
+                        }
+                        else{
+                            Toast.makeText(getApplicationContext(),"List Name already in use!",Toast.LENGTH_LONG).show();
+                        }
+
                     }
                 });
 
@@ -82,17 +99,25 @@ public class MainActivity extends AppCompatActivity{
                 mPopupWindow.showAtLocation(v, Gravity.CENTER,0,0);
             }
         });
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
 
     }
-    private void testData() {
-        ArrayList<String> testItems = new ArrayList<>();
-        testItems.add("fruit");
-        testItems.add("vegies");
-        testItems.add("drpepper");
-        testItems.add("meat");
-        mArrayListGroceryList.add(new GroceryList("Dinner Sunday", testItems));
-        mArrayListGroceryList.add(new GroceryList("Weekly Groceries", testItems));
-        mArrayListGroceryList.add(new GroceryList("New Recipe", testItems));
-      // mRecyclerAdapter.notifyDataSetChanged();
+    private void getLists() {
+
+        Cursor data = db.getAllLists();
+        ArrayList<String> listString = new ArrayList<>();
+        while(data.moveToNext()){
+            listString.add(data.getString(0));
+        }
+        for(int i =0; i < listString.size(); i ++){
+            ArrayList<ListItem> listItems = db.getListIngredients(listString.get(i).toString());
+            mArrayListGroceryList.add(new GroceryList(listString.get(i).toString(), listItems));
+        }
     }
 }
