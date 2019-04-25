@@ -3,20 +3,37 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/colorGeorgiaSouthernGold">
+    android:layout_height="300dp"
+    android:background="@drawable/roudbordewhite">
 
     <EditText
         android:id="@+id/addListNameEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="380dp"
+        android:layout_height="65dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="28dp"
         android:hint="Enter List Name:"
-        android:inputType="text" />
+        android:inputType="text"
+        android:textColor="@color/colorWhite"
+        android:textColorHint="@color/colorWhite"
+        android:backgroundTint="@color/colorWhite"/>
 
     <Button
         android:id="@+id/addNewGroceryList"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="174dp"
+        android:layout_height="78dp"
+        android:layout_below="@+id/addListNameEditText"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="111dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="126dp"
+        android:background="@drawable/roundbordertransparent"
         android:text="Add"
-        android:layout_below="@+id/addListNameEditText"/>
+        android:textColor="@color/colorWhite"
+        android:layout_marginBottom="20dp"/>
 </RelativeLayout>

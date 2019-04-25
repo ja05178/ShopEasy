@@ -43,6 +43,7 @@ public class RecipeListRecyclerAdapter extends RecyclerView.Adapter<RecipeListRe
                 Intent i = new Intent(context, GroceryListActivity.class);
 
                 i.putExtra("groceryList", arrayListGroceryList.get(position));
+                i.putExtra("position", position);
                 context.startActivity(i);
             }
         });
@@ -69,7 +70,7 @@ public class RecipeListRecyclerAdapter extends RecyclerView.Adapter<RecipeListRe
         public MyViewHolder(View itemView) {
             super(itemView);
             tv = (TextView) itemView.findViewById(R.id.textView);
-            deleteListBt = (Button) itemView.findViewById(R.id.deleteListButton);
+            deleteListBt = (Button) itemView.findViewById(R.id.deleteGroceryList);
         }
     }
 }

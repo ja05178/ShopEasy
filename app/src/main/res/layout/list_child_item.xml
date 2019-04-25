@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/recipeHolder"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp">
+
+    <TextView
+        android:id="@+id/groceryListItem"
+        android:layout_width="304dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="25dp"
+        android:text="Placeholder"
+        android:textColor="@color/colorGeorgiaSouthernBlue"
+        android:textSize="35dp"
+        android:textStyle="normal"/>
+
+    <Button
+        android:id="@+id/deleteListItemButton"
+        android:layout_width="55dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="341dp"
+        android:layout_marginTop="0dp"
+        android:background="@android:color/transparent"
+        android:drawableLeft="@android:drawable/ic_menu_close_clear_cancel" />
+</RelativeLayout>

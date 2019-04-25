@@ -3,4 +3,14 @@
     <string name="bulleted_list"></string>
     <string name="title_activity_grocery_list">GroceryListActivity</string>
     <string name="title_activity_grocery_list_add">GroceryListAdd</string>
+    <string-array name="category">
+        <item>Produce</item>
+        <item>Frozen</item>
+        <item>Meats</item>
+        <item>Refrigerated</item>
+        <item>Snacks</item>
+        <item>Canned Foods</item>
+        <item>Boxed Foods</item>
+        <item>Cleaning Supplies</item>
+    </string-array>
 </resources>

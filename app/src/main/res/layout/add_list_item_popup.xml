@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="300dp"
-    android:background="@color/colorGeorgiaSouthernGold">
+
+    android:background="@drawable/roudbordewhite">
 
     <EditText
         android:id="@+id/addListItemEditText"
@@ -17,7 +18,10 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="11dp"
         android:hint="Enter Item Name:"
-        android:inputType="text" />
+        android:inputType="text"
+        android:textColor="@color/colorWhite"
+        android:textColorHint="@color/colorWhite"
+        android:backgroundTint="@color/colorWhite"/>
 
     <EditText
         android:id="@+id/addListCategoryEditText"
@@ -30,7 +34,10 @@
         android:layout_marginTop="13dp"
         android:layout_marginEnd="10dp"
         android:hint="Enter Item Category:"
-        android:inputType="text" />
+        android:inputType="text"
+        android:textColor="@color/colorWhite"
+        android:textColorHint="@color/colorWhite"
+        android:backgroundTint="@color/colorWhite"/>
 
     <Button
         android:id="@+id/addListItemButton"
@@ -42,5 +49,8 @@
         android:layout_marginStart="118dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="119dp"
-        android:text="Add" />
+        android:background="@drawable/roundbordertransparent"
+        android:text="Add"
+        android:textColor="@color/colorWhite"
+        android:layout_marginBottom="20dp"/>
 </RelativeLayout>

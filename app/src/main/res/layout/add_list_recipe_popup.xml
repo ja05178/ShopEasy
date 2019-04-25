@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="300dp"
-    android:background="@color/colorGeorgiaSouthernGold">
+    android:background="@drawable/roudbordewhite">
 
     <EditText
         android:id="@+id/addListRecipeEditText"
@@ -17,7 +17,10 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="11dp"
         android:hint="Enter URL:"
-        android:inputType="text" />
+        android:inputType="text"
+        android:textColor="@color/colorWhite"
+        android:textColorHint="@color/colorWhite"
+        android:backgroundTint="@color/colorWhite"/>
 
 
     <Button
@@ -30,5 +33,8 @@
         android:layout_marginStart="109dp"
         android:layout_marginTop="29dp"
         android:layout_marginEnd="128dp"
-        android:text="Add" />
+        android:background="@drawable/roundbordertransparent"
+        android:text="Add"
+        android:textColor="@color/colorWhite"
+        android:layout_marginBottom="20dp"/>
 </RelativeLayout>

@@ -1,8 +1,6 @@
 package com.example.shopeasydemo;
 
 import android.content.Context;
-import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,7 +26,7 @@ public class GroceryListItemsAdapter extends RecyclerView.Adapter<GroceryListIte
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
 
-        View itemView =inflater.inflate(R.layout.recycler_grocery_list_items,parent,false);
+        View itemView =inflater.inflate(R.layout.list_child_item,parent,false);
         MyViewHolder myViewHolder = new MyViewHolder(itemView);
         return myViewHolder;
     }
@@ -40,7 +38,8 @@ public class GroceryListItemsAdapter extends RecyclerView.Adapter<GroceryListIte
         final String groceryListName = groceryList.getListName();
         System.out.println("Position: " + position + " Item Name: " + itemName + " Item Category: " + itemCategory);
         TextView textView = myViewHolder.tv;
-        textView.setText(itemName +" " +itemCategory);
+        //textView.setText(itemName +" " +itemCategory);
+        textView.setText(itemName);
         textView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
